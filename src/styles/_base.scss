@@ -1,0 +1,55 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html,
+body,
+ul,
+ol,
+h1,
+h2,
+h3,
+h4,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+textarea,
+input[type="text"],
+input[type="email"],
+input[type="button"],
+input[type="submit"],
+input[type="password"] {
+  font-family: "Arial", "Tahoma", "Verdana", sans-serif;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+body {
+  height: 100%;
+  font: 400 14px/17px "Arial", "Tahoma", "Verdana", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}

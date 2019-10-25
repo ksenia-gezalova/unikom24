@@ -1,0 +1,2 @@
+export const PUSH_TO_PEOPLE_LIST = "PUSH_TO_PEOPLE_LIST";
+export const PUSH_TO_SHIPS_LIST = "PUSH_TO_SHIPS_LIST";

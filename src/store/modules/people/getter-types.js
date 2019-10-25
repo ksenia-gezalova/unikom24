@@ -1,0 +1,1 @@
+export const GET_PEOPLE_COUNT = "GET_PEOPLE_COUNT";
