@@ -1,6 +1,22 @@
-// VARS
-
 .dark {
   background-color: black;
   color: firebrick;
+
+  .person-card--short {
+    &:hover {
+      .person-card__img {
+        transform: translateY(-10px);
+        box-shadow: 0 0 10px rgba(241, 3, 3, 0.658);
+      }
+    }
+  }
+
+  .person-card__info {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .theme-switcher {
+    background-color: black;
+    border: 1px solid rgba(241, 3, 3, 0.658);
+  }
 }

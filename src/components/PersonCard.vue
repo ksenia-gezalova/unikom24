@@ -11,12 +11,24 @@
     <div v-if="!isShort" class="person-card__full">
       Год рождения: {{ person.birth_year}}
       Пол: {{ person.gender }}
-      <div>{{ person.starships }}</div>
+      <div class="person-card__starships" v-if="starships.length > 0">
+        Корабли:
+        <ul class="person-card__list">
+          <li class="person-card__item" v-for="ship in starships" :key="ship.url">
+            модель: {{ ship.model }},
+            имя: {{ ship.name }},
+          </li>
+        </ul>
+      </div>
+      <div class="person-card__starships" v-else>Кораблей у персонажа нет</div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import { people } from "@/store/modules/store.namespaces.js";
+
 export default {
   name: "PersonCard",
   props: {
@@ -30,8 +42,14 @@ export default {
     }
   },
   computed: {
+    ...mapState(people, ["shipsList"]),
     isShort() {
       return this.mode === "short";
+    },
+    starships() {
+      return this.shipsList.filter(ship =>
+        this.person.starships.includes(ship.url)
+      );
     }
   },
   methods: {
@@ -48,14 +66,7 @@ export default {
 
 <style lang="scss" scoped>
 .person-card {
-  &--short {
-    &:hover {
-      .person-card__img {
-        transform: translateY(-10px);
-        box-shadow: 0 0 10px rgba(241, 3, 3, 0.658);
-      }
-    }
-  }
+  text-align: center;
   margin-bottom: 25px;
   font-weight: 700;
   font-size: 14px;
@@ -65,7 +76,7 @@ export default {
     flex-shrink: 0;
     height: 200px;
     width: 200px;
-    margin-right: 10px;
+    margin: 0 auto;
     border: 1px solid inherit;
     overflow: hidden;
     transition: all 0.3s;
@@ -83,7 +94,10 @@ export default {
     text-align: center;
     width: 100%;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  &__starships {
+    margin-top: 20px;
   }
 }
 </style>

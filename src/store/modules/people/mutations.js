@@ -8,6 +8,6 @@ export default {
     state.peopleList.push(...payload);
   },
   [PUSH_TO_SHIPS_LIST](state, payload) {
-    state.shipsList.push(payload);
+    state.shipsList.push(...payload);
   }
 };

@@ -1,14 +1,14 @@
 <template>
   <div class="catalogue">
     <h1 class="catalogue__title">Galactic base</h1>
+    <pagination-control
+      class="catalogue__pagination"
+      :itemsCount="peopleCount"
+      :itemsPerPage="itemsPerPage"
+      :currentPage="currentPage"
+      @setCurrentPage="setPage"
+    ></pagination-control>
     <div class="catalogue__wrapper">
-      <pagination-control
-        :itemsCount="peopleCount"
-        :itemsPerPage="itemsPerPage"
-        :currentPage="currentPage"
-        @setCurrentPage="setPage"
-      ></pagination-control>
-
       <person-card
         class="catalogue__item"
         @click.native="goToPerson(person)"
@@ -60,6 +60,11 @@ export default {
   height: 100%;
   padding: 20px;
   overflow: auto;
+
+  &__pagination {
+    margin-top: 30px;
+    text-align: center;
+  }
 
   &__wrapper {
     display: grid;

@@ -19,14 +19,8 @@ export default {
   name: "App",
   components: { ThemeSwitcher },
   created() {
-    dataService.loadPeople(this.pushToPeopleList).then(() => {
-      // eslint-disable-next-line no-debugger
-      // debugger;
-      let ships = this.peopleList
-        .map(person => person.starships)
-        .reduce((accumulator, current) => accumulator.concat(current));
-      dataService.loadShips(this.pushToShipsList, ships);
-    });
+    dataService.getData("people", this.pushToPeopleList);
+    dataService.getData("starships/", this.pushToShipsList);
   },
   computed: {
     ...mapState(people, ["peopleList"]),
@@ -52,7 +46,7 @@ export default {
   &__switcher {
     position: absolute;
     right: 20px;
-    bottom: 30px;
+    top: 30px;
   }
 }
 </style>

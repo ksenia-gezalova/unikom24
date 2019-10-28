@@ -6,23 +6,23 @@
       class="pagination-control__button"
     >&lt;</button>
     <button
-      v-if="currentPage > 2"
+      v-if="currentPage > 2 && countOfPages > 3"
       @click="setCurrentPage(1)"
       :class="{'pagination-control__button': true, 'pagination-control__button--active': pageIsCurrent(1)}"
     >{{ 1 }}</button>
-    <span v-if="currentPage > 3">..</span>
-    <span v-if="currentPage > countOfPages - 3">..</span>
+    <span v-if="middlePages[0] > 2">..</span>
+    <span v-if="currentPage > countOfPages - 3 && countOfPages > 5">..</span>
     <button
       v-for="pageNumber in middlePages"
       :key="pageNumber"
       @click="setCurrentPage(pageNumber)"
       :class="{'pagination-control__button': true, 'pagination-control__button--active': pageIsCurrent(pageNumber)}"
     >{{ pageNumber }}</button>
-    <span v-if="currentPage < countOfPages - 2">..</span>
-    <span v-if="currentPage < 4">..</span>
+    <span v-if="currentPage < countOfPages - 2 && countOfPages > 5">..</span>
+    <span v-if="middlePages[middlePages.length - 1] + 1 < countOfPages">..</span>
     <button
       @click="setCurrentPage(countOfPages)"
-      v-if="currentPage < countOfPages - 1"
+      v-if="currentPage < countOfPages - 1 && countOfPages > 3"
       :class="{'pagination-control__button': true, 'pagination-control__button--active': pageIsCurrent(countOfPages)}"
     >{{ countOfPages }}</button>
     <button
@@ -79,14 +79,13 @@ export default {
   display: block;
 
   &__button {
-    background-color: rgba(70, 10, 20, 0.6);
-    color: cornsilk;
+    background-color: inherit;
+    color: inherit;
     border: none;
     text-decoration: underline;
 
     &--active {
-      background-color: cornsilk;
-      color: rgba(70, 10, 20, 0.6);
+      background-color: #ffe300;
     }
   }
 }

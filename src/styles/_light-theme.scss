@@ -1,4 +1,23 @@
 .light {
-  color: white;
-  background-color: blue;
+  color: rgba(3, 134, 241, 0.658);
+  background-color: white;
+
+  .person-card--short {
+    &:hover {
+      .person-card__img {
+        transform: translateY(-10px);
+        box-shadow: 0 0 10px rgba(3, 134, 241, 0.658);
+      }
+    }
+  }
+
+  .person-card__info {
+    color: white;
+    background-color: rgba(3, 134, 241, 0.658);
+  }
+
+  .theme-switcher {
+    background-color: white;
+    border: 1px solid rgba(3, 134, 241, 0.658);
+  }
 }
